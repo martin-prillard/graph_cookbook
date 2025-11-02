@@ -12,4 +12,5 @@ dependencies = [
     "ipykernel>=6.0.0",
     "geopandas>=0.13.0",
     "jupyterlab",
+    "streamlit>=1.28.0",
 ]

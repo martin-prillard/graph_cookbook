@@ -5,4 +5,5 @@ matplotlib>=3.7.0
 numpy>=1.24.0
 ipykernel>=6.0.0
 geopandas>=0.13.0
+streamlit>=1.28.0
 

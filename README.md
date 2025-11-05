@@ -6,7 +6,7 @@ An interactive educational tool for exploring graph algorithms on Paris's road n
 
 This project demonstrates fundamental graph traversal and shortest path algorithms using real-world data from Paris's road network. It consists of three main parts:
 
-1. **Theory Part** (`BFS_DFS_Shortest_Path.ipynb`): Educational notebook covering the theoretical foundations of graph algorithms
+1. **Theory Part** (`theory.ipynb`): Educational notebook covering the theoretical foundations of graph algorithms
 2. **Exercises** (`exercices.ipynb`): Hands-on exercises to practice implementing and understanding graph algorithms
 3. **Streamlit Web App** (`app.py`): Interactive web application for exploring algorithms in real-time with visualizations
 
@@ -55,7 +55,7 @@ The app will open in your browser at `http://localhost:8501`
 
 1. **Theory Part**: Start with the theory notebook to understand the algorithms:
 ```bash
-jupyter lab BFS_DFS_Shortest_Path.ipynb
+jupyter lab theory.ipynb
 ```
 
 2. **Exercises**: Practice with hands-on exercises:
@@ -88,7 +88,7 @@ jupyter lab exercices.ipynb
 ```
 graph_trip/
 ├── app.py                           # Streamlit web application
-├── BFS_DFS_Shortest_Path.ipynb      # Theory notebook
+├── theory.ipynb      # Theory notebook
 ├── exercices.ipynb                  # Exercises notebook
 ├── requirements.txt                 # Python dependencies
 ├── pyproject.toml                   # Project configuration

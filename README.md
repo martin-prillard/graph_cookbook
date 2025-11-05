@@ -4,7 +4,11 @@ An interactive educational tool for exploring graph algorithms on Paris's road n
 
 ## 📋 Overview
 
-This project demonstrates fundamental graph traversal and shortest path algorithms using real-world data from Paris's road network. It features both a **Streamlit web application** for interactive exploration and **Jupyter notebooks** for educational purposes.
+This project demonstrates fundamental graph traversal and shortest path algorithms using real-world data from Paris's road network. It consists of three main parts:
+
+1. **Theory Part** (`BFS_DFS_Shortest_Path.ipynb`): Educational notebook covering the theoretical foundations of graph algorithms
+2. **Exercises** (`exercices.ipynb`): Hands-on exercises to practice implementing and understanding graph algorithms
+3. **Streamlit Web App** (`app.py`): Interactive web application for exploring algorithms in real-time with visualizations
 
 ### Key Features
 
@@ -49,9 +53,14 @@ The app will open in your browser at `http://localhost:8501`
 
 ### Using the Jupyter Notebooks
 
-For a more in-depth exploration with explanations:
+1. **Theory Part**: Start with the theory notebook to understand the algorithms:
 ```bash
-jupyter lab TD_BFS_DFS_ShortestPath.ipynb
+jupyter lab BFS_DFS_Shortest_Path.ipynb
+```
+
+2. **Exercises**: Practice with hands-on exercises:
+```bash
+jupyter lab exercices.ipynb
 ```
 
 ## 🎯 How It Works
@@ -78,11 +87,12 @@ jupyter lab TD_BFS_DFS_ShortestPath.ipynb
 
 ```
 graph_trip/
-├── app.py                    # Streamlit web application
-├── TD_BFS_DFS_ShortestPath.ipynb  # Educational notebook
-├── requirements.txt          # Python dependencies
-├── pyproject.toml           # Project configuration
-└── cache/                   # Cached road network data
+├── app.py                           # Streamlit web application
+├── BFS_DFS_Shortest_Path.ipynb      # Theory notebook
+├── exercices.ipynb                  # Exercises notebook
+├── requirements.txt                 # Python dependencies
+├── pyproject.toml                   # Project configuration
+└── cache/                           # Cached road network data
 ```
 
 ## 💡 Educational Insights

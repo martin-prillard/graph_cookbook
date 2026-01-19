@@ -6,7 +6,10 @@ The project contains multiple graph analytics notebooks (centrality, community d
 
 ### DevContainer (recommended)
 
-**Prerequisites**: Docker, VS Code, VS Code Dev Containers extension.
+**Prerequisites**: 
+- Docker
+- VSCode or Cursor
+- Dev Containers extension.
 
 **Steps**:
 
@@ -14,10 +17,11 @@ The project contains multiple graph analytics notebooks (centrality, community d
 git clone https://github.com/martin-prillard/graph_cookbook
 cd graph_cookbook
 # Open in VS Code → "Reopen in Container"
-
-VSCode builds the container, installs dependencies via uv sync, mounts your code.
-Code changes are automatically saved locally.
 ```
+
+VSCode will build the container, installs dependencies via uv sync, mounts your code.
+Code changes are automatically saved locally.
+
 
 ### Docker only (optional, if you have problem with DevContainer)
 

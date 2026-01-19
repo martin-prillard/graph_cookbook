@@ -1,0 +1,34 @@
+{
+  "name": "graph_cookbook (uv + Python 3.11)",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+
+  "workspaceFolder": "/workspace",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+
+  "mounts": [
+    "source=${localWorkspaceFolder}/data,target=/workspace/data,type=bind"
+  ],
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+        "python.terminal.activateEnvironment": true,
+        "jupyter.defaultKernel": "Python 3.11 (uv)"
+      },
+      "extensions": [
+        "ms-python.python",
+        "ms-toolsai.jupyter",
+        "ms-python.vscode-pylance",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+
+  "forwardPorts": [8888],
+  "postCreateCommand": "uv sync",
+  "remoteUser": "vscode"
+}

@@ -2,14 +2,39 @@
 
 The project contains multiple graph analytics notebooks (centrality, community detection, malware classification, etc.). The easiest way to run them consistently is via the provided Docker image:
 
+## 1️⃣ DevContainer (recommended)
+
+**Prerequisites**: Docker, VS Code, VS Code Dev Containers extension.
+
+**Steps**:
+
+```bash
+git clone https://github.com/martin-prillard/graph_cookbook
+cd graph_cookbook
+# Open in VS Code → "Reopen in Container"
+
+VSCode builds the container, installs dependencies via uv sync, mounts your code.
+Code changes are automatically saved locally.
+
+## Docker only (optional)
+
 1. **Build the image**
-   ```bash
-   docker build -t graph_cookbook .
-   ```
+```bash
+docker build -t graph_cookbook .
+```
+
 2. **Start JupyterLab**
-   ```bash
-   docker run --rm -p 8888:8888 -v "$(pwd)":/app graph_cookbook
-   ```
+```bash
+docker run --rm -p 8888:8888 -v "$(pwd)":/workspace graph_cookbook
+```
 
 Then open `http://localhost:8888` in your browser (token disabled) and launch any notebook inside the workspace.
 
+## 2️⃣ Run the notebooks
+
+Copy paste files of data in `./data` if needed to use them from notebooks.
+
+
+# First time Git setup in container
+git config --global user.name "martin-prillard"
+git config --global user.email "prillard.martin@gmail.com"

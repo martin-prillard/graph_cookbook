@@ -1,81 +1,43 @@
-############
-# Builder  #
-############
-
-FROM python:3.11-slim AS builder
-
-ENV DEBIAN_FRONTEND=noninteractive \
-    PYTHONUNBUFFERED=1 \
-    PYTHONDONTWRITEBYTECODE=1
-
-# System dependencies for building wheels (geospatial + ML stack)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        build-essential \
-        git \
-        curl \
-        ca-certificates \
-        libgdal-dev \
-        libgeos-dev \
-        libproj-dev && \
-    rm -rf /var/lib/apt/lists/*
-
-WORKDIR /build
-
-RUN pip install --upgrade pip && \
-    pip install uv
-
-# Copy dependency files first to leverage Docker layer caching
-COPY pyproject.toml uv.lock* ./
-
-# Create an isolated environment and install project deps into it
-RUN uv sync --python /usr/local/bin/python --locked
-
-# Install PyTorch (CPU) and PyTorch Geometric into the same environment
-RUN uv pip install --index-url https://download.pytorch.org/whl/cpu torch && \
-    uv pip install torch_geometric
-
-
-############
-# Runtime  #
-############
-
+# Base Python
 FROM python:3.11-slim
 
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1
 
-# Runtime system libs only (no build tools to keep image small)
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-        git \
-        curl \
-        ca-certificates \
-        libgdal-dev \
-        libgeos-dev \
-        libproj-dev && \
-    rm -rf /var/lib/apt/lists/*
+# Dépendances système
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    build-essential \
+    git \
+    curl \
+    ca-certificates \
+    libgdal-dev \
+    libgeos-dev \
+    libproj-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-WORKDIR /app
+WORKDIR /workspace
 
-# Copy pre-built environment from builder stage (installed by uv)
-# Keep it outside /app so bind mounts don't override it
-COPY --from=builder /build/.venv /opt/venv
+# Installer pip et uv
+RUN pip install --upgrade pip uv
 
-# Provide a stable path for tools that were installed while the env lived under /build/.venv
-RUN mkdir -p /build && ln -s /opt/venv /build/.venv
+# Copier fichiers de dépendances
+COPY pyproject.toml uv.lock* ./
 
-# Make the virtualenv the default Python
-ENV VIRTUAL_ENV="/opt/venv" \
-    PATH="/opt/venv/bin:$PATH"
+# Installer les dépendances
+RUN if [ -f uv.lock ]; then \
+      uv sync --python /usr/local/bin/python --locked; \
+    else \
+      uv sync --python /usr/local/bin/python; \
+    fi
 
-# Copy project files (notebooks, scripts, etc.)
-COPY . .
+# PyTorch CPU + PyTorch Geometric
+RUN uv pip install --index-url https://download.pytorch.org/whl/cpu torch \
+ && uv pip install torch-geometric
 
-# Expose JupyterLab default port
-EXPOSE 8888
+# Configurer le virtualenv par défaut
+ENV VIRTUAL_ENV="/workspace/.venv" \
+    PATH="/workspace/.venv/bin:$PATH"
 
-# Launch JupyterLab on container start
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root", "--NotebookApp.token="]
-
+# Ne pas copier le code source ici
+# → le code sera monté via volume Docker ou DevContainer

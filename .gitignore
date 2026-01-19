@@ -1,5 +1,5 @@
 cache
-graph_trip.egg-info
+graph_cookbook.egg-info
 .venv
 .ipynb_checkpoints
 .DS_Store

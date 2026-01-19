@@ -4,7 +4,7 @@ The project contains multiple graph analytics notebooks (centrality, community d
 
 ## 1️⃣ Installation
 
-### DevContainer (recommended)
+### Installation using DevContainer (recommended)
 
 **Prerequisites**: 
 - Docker
@@ -23,7 +23,8 @@ VSCode will build the container, installs dependencies via uv sync, mounts your 
 Code changes are automatically saved locally.
 
 
-### Docker only (optional, if you have problem with DevContainer)
+### Installation using Docker only 
+(optional, if you have problem with DevContainer)
 
 1. **Build the image**
 ```bash

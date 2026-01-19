@@ -1,7 +1,7 @@
 {
   "name": "graph_cookbook (uv + Python 3.11)",
   "build": {
-    "dockerfile": "Dockerfile",
+    "dockerfile": "../Dockerfile",
     "context": ".."
   },
 

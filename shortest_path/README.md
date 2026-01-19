@@ -20,28 +20,6 @@ This project demonstrates fundamental graph traversal and shortest path algorith
 
 ## 🚀 Quick Start
 
-### Prerequisites
-
-- Python ≥3.11
-- Internet connection (to download road network data)
-
-### Installation
-
-1. Clone or navigate to the project directory:
-```bash
-cd graph_trip
-```
-
-2. Install dependencies:
-```bash
-pip install -r requirements.txt
-```
-
-Or using `uv` (if available):
-```bash
-uv pip install -r requirements.txt
-```
-
 ### Running the Web App
 
 Launch the Streamlit application:
@@ -50,18 +28,6 @@ streamlit run app.py
 ```
 
 The app will open in your browser at `http://localhost:8501`
-
-### Using the Jupyter Notebooks
-
-1. **Theory Part**: Start with the theory notebook to understand the algorithms:
-```bash
-jupyter lab theory.ipynb
-```
-
-2. **Exercises**: Practice with hands-on exercises:
-```bash
-jupyter lab exercices.ipynb
-```
 
 ## 🎯 How It Works
 

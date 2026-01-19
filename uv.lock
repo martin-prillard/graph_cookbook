@@ -771,7 +771,7 @@ wheels = [
 ]
 
 [[package]]
-name = "graph_cookbook"
+name = "graph-cookbook"
 version = "0.1.0"
 source = { virtual = "." }
 dependencies = [

@@ -33,11 +33,11 @@ docker build -t graph_cookbook .
 
 2. **Start JupyterLab**
 ```bash
-docker run --rm -p 8888:8888 -v "$(pwd)":/workspace graph_cookbook
+docker run --rm -p 8888:8888 -v "$(pwd)":/workspace -v "$(pwd)/data":/workspace/data graph_cookbook
 ```
 
-Then open `http://localhost:8888` in your browser (token disabled) and launch any notebook inside the workspace.
-
 ## 2️⃣ Run the notebooks
+
+JupyterLab: http://localhost:8888
 
 Copy paste data files in the `./data` directory you need them for notebooks.

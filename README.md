@@ -33,7 +33,7 @@ docker build -t graph_cookbook .
 
 2. **Start JupyterLab**
 ```bash
-docker run --rm -p 8888:8888 -v "$(pwd)":/workspace -v "$(pwd)/data":/workspace/data graph_cookbook
+docker run --rm -p 8888:8888 -v "$(pwd)":/workspace/cookbook graph_cookbook
 ```
 
 ## 2️⃣ Run the notebooks

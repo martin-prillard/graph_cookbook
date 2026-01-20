@@ -38,6 +38,6 @@ docker run --rm -p 8888:8888 -v "$(pwd)":/workspace/cookbook graph_cookbook
 
 ## 2️⃣ Run the notebooks
 
-JupyterLab: http://localhost:8888
+Use VSCode/Cursor or JupyterLab (http://localhost:8888)
 
 Copy paste data files in the `./data` directory you need them for notebooks.

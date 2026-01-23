@@ -1142,6 +1142,7 @@ dependencies = [
     { name = "karateclub" },
     { name = "matplotlib" },
     { name = "networkx" },
+    { name = "node2vec" },
     { name = "numpy" },
     { name = "opentsne" },
     { name = "osmnx" },
@@ -1170,6 +1171,7 @@ requires-dist = [
     { name = "karateclub" },
     { name = "matplotlib" },
     { name = "networkx" },
+    { name = "node2vec", specifier = ">=0.5.0" },
     { name = "numpy" },
     { name = "opentsne" },
     { name = "osmnx" },
@@ -1543,11 +1545,11 @@ wheels = [
 
 [[package]]
 name = "joblib"
-version = "1.3.2"
+version = "1.5.3"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/15/0f/d3b33b9f106dddef461f6df1872b7881321b247f3d255b87f61a7636f7fe/joblib-1.3.2.tar.gz", hash = "sha256:92f865e621e17784e7955080b6d042489e3b8e294949cc44c6eac304f59772b1", size = 1987720, upload-time = "2023-08-09T09:23:40.503Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/41/f2/d34e8b3a08a9cc79a50b2208a93dce981fe615b64d5a4d4abee421d898df/joblib-1.5.3.tar.gz", hash = "sha256:8561a3269e6801106863fd0d6d84bb737be9e7631e33aaed3fb9ce5953688da3", size = 331603, upload-time = "2025-12-15T08:41:46.427Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/10/40/d551139c85db202f1f384ba8bcf96aca2f329440a844f924c8a0040b6d02/joblib-1.3.2-py3-none-any.whl", hash = "sha256:ef4331c65f239985f3f2220ecc87db222f08fd22097a3dd5698f693875f8cbb9", size = 302207, upload-time = "2023-08-09T09:23:34.583Z" },
+    { url = "https://files.pythonhosted.org/packages/7b/91/984aca2ec129e2757d1e4e3c81c3fcda9d0f85b74670a094cc443d9ee949/joblib-1.5.3-py3-none-any.whl", hash = "sha256:5fc3c5039fc5ca8c0276333a188bbd59d6b7ab37fe6632daa76bc7f9ec18e713", size = 309071, upload-time = "2025-12-15T08:41:44.973Z" },
 ]
 
 [[package]]
@@ -2439,6 +2441,22 @@ wheels = [
 ]
 
 [[package]]
+name = "node2vec"
+version = "0.5.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "gensim" },
+    { name = "joblib" },
+    { name = "networkx" },
+    { name = "numpy" },
+    { name = "tqdm" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/23/b5/ce1a0305d1dbd302f4c5136d88f4278c153a29d61b2f519672715d48c5e3/node2vec-0.5.0.tar.gz", hash = "sha256:0068e79da9893017b5bee072a735b6e9b266e8e67df44ca85b3a7abbbc13d07c", size = 5564, upload-time = "2024-08-02T11:12:25.175Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/b9/ca/d3bedf079e1132dfb5c8bcfac721dc11a1cd8064c9472d22ffa2c23c9ce3/node2vec-0.5.0-py3-none-any.whl", hash = "sha256:8bdbc11baa6e17ba58219c91da09624db01de7f10b2f6a445b3fd20ec5edcc15", size = 7206, upload-time = "2024-08-02T11:12:23.417Z" },
+]
+
+[[package]]
 name = "notebook-shim"
 version = "0.2.4"
 source = { registry = "https://pypi.org/simple" }
@@ -3190,7 +3208,7 @@ wheels = [
 
 [[package]]
 name = "pycaret"
-version = "3.3.2"
+version = "3.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "category-encoders" },
@@ -3231,7 +3249,7 @@ dependencies = [
     { name = "yellowbrick" },
 ]
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3e/6f/b3d59fac3869a7685e68aecdd35c336800bce8c8d3b45687bb82cf9a2848/pycaret-3.3.2-py3-none-any.whl", hash = "sha256:61066b85b3a51944d61110ca3575d2f5d29f403aecc073a281765adeda3f5dcb", size = 486129, upload-time = "2024-04-28T18:46:21.882Z" },
+    { url = "https://files.pythonhosted.org/packages/c7/d8/4e703f17f17d7d7764fe6d586872e787ce3a248640221f5f2d586f671eee/pycaret-3.3.0-py3-none-any.whl", hash = "sha256:e6cdb90a9cf5fc03400f604bf5eb1847229eedad5ef236a27f07f85718e0ace0", size = 485852, upload-time = "2024-02-20T04:08:49.222Z" },
 ]
 
 [[package]]

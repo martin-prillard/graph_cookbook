@@ -39,7 +39,7 @@ docker build -t graph_cookbook .
 
 2. **Start JupyterLab**
 ```bash
-docker run --rm -p 8888:8888 -v "$(pwd)":/workspace/cookbook graph_cookbook
+docker run --gpus all --rm -p 8888:8888 -v "$(pwd)/src":/workspace/src -v "$(pwd)/data":/workspace/data graph_cookbook
 ```
 
 ### Installation using Python environment

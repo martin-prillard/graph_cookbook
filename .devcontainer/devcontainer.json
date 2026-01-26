@@ -4,9 +4,10 @@
     "dockerfile": "../Dockerfile",
     "context": ".."
   },
-
   "workspaceFolder": "/workspace",
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind",
+
+  "runArgs": ["--gpus=all"],
 
   "customizations": {
     "vscode": {

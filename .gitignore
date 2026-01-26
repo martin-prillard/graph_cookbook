@@ -12,3 +12,4 @@ logs.logs
 */data/*
 *.log
 *.trashinfo
+*Zone.Identifier

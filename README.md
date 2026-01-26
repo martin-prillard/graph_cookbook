@@ -4,12 +4,18 @@ The project contains multiple graph analytics notebooks (centrality, community d
 
 ## 1️⃣ Installation
 
+Three different ways to use this project using:
+
+- DevContainer
+- Docker image
+- Python environment
+
 ### Installation using DevContainer (recommended)
 
 **Prerequisites**: 
 - Docker
 - VSCode or Cursor
-- Dev Containers extension.
+- Dev Containers extension on VSCode or Cursor
 
 **Steps**:
 
@@ -36,8 +42,22 @@ docker build -t graph_cookbook .
 docker run --rm -p 8888:8888 -v "$(pwd)":/workspace/cookbook graph_cookbook
 ```
 
+### Installation using Python environment
+(optional, if you want to run this project from scratch)
+
+1. **Create your python env**
+```bash
+uv sync
+```
+
+2. **Run Jupyter Lab**
+```bash
+uv run jupyter lab
+```
+
+
 ## 2️⃣ Run the notebooks
 
-Use VSCode/Cursor or JupyterLab (http://localhost:8888 for docker and http://localhost:88 for DevContainer)
+Use VSCode/Cursor or JupyterLab (http://localhost:8888)
 
 Copy paste data files in the `./data` directory you need them for notebooks.

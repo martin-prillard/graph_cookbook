@@ -33,9 +33,9 @@ COPY pyproject.toml uv.lock* ./
 # Installer deps via uv
 RUN uv sync --python /usr/local/bin/python --locked
 
-# Installer PyTorch CPU et PyG
-RUN uv pip install --index-url https://download.pytorch.org/whl/cpu torch \
- && uv pip install torch-geometric
+
+# hard fix: compatibility issue between pycaret 3.3.0 and node2vec 0.5.0
+RUN uv pip install --force-reinstall joblib==1.3.2
 
 # --------------- USER SETUP ---------------
 USER $USERNAME

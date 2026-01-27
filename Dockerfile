@@ -51,7 +51,7 @@ RUN uv pip install --force-reinstall joblib==1.3.2 --python /opt/venv/bin/python
 # --------------- PORT & CMD ---------------
 EXPOSE 8888
 
-CMD ["/opt/venv/bin/jupyter", "lab", \
+CMD ["uv", "run", "jupyter", "lab", \
      "--ip=0.0.0.0", \
      "--port=8888", \
      "--no-browser", \

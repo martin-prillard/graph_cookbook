@@ -6,9 +6,9 @@ The project contains multiple graph analytics notebooks (centrality, community d
 
 Three different ways to use this project using:
 
-- DevContainer
-- Docker image
-- Python environment
+- Option A: DevContainer
+- Option B: Docker image
+- Option C: Python environment
 
 ### Option A: installation using DevContainer (recommended)
 

@@ -38,6 +38,7 @@ RUN uv sync --python /usr/local/bin/python --locked
 RUN uv pip install --force-reinstall joblib==1.3.2
 
 # --------------- USER SETUP ---------------
+
 USER $USERNAME
 
 # --------------- PORT & CMD ---------------

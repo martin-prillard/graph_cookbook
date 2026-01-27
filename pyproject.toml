@@ -30,8 +30,8 @@ dependencies = [
     "geopandas>=0.14,<1.1.*",
 
     # --- Deep learning ---
-    "torch==2.10.*",
-    "torch-geometric==2.7.*",
+    # "torch==2.10.*",
+    # "torch-geometric==2.7.*",
 
     # --- Notebooks & viz ---
     "jupyterlab>=4.1,<4.5.*",

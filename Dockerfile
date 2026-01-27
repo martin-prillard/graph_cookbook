@@ -5,8 +5,8 @@ FROM python:3.11-slim
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    VIRTUAL_ENV=/tmp/venv \
-    PATH=/tmp/venv/bin:/home/vscode/.local/bin:/usr/local/bin:$PATH
+    VIRTUAL_ENV=/opt/venv \
+    PATH=/opt/venv/bin:/home/vscode/.local/bin:/usr/local/bin:$PATH
 
 # --------------- SYSTEM DEPENDENCIES (root) ---------------
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -31,8 +31,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN pip install --upgrade pip uv
 
 # --------------- CREATE VENV OUTSIDE WORKSPACE (root) ---------------
-RUN uv venv /tmp/venv --python python
-RUN chown -R vscode:vscode /tmp/venv
+RUN uv venv /opt/venv --python python
+RUN chown -R vscode:vscode /opt/venv
 
 # --------------- SWITCH USER ASAP ---------------
 USER $USERNAME
@@ -46,12 +46,12 @@ COPY pyproject.toml uv.lock* ./
 RUN uv sync --locked
 
 # hard fix: compatibility issue between pycaret 3.3.0 and node2vec 0.5.0
-RUN uv pip install --force-reinstall joblib==1.3.2 --python /tmp/venv/bin/python
+RUN uv pip install --force-reinstall joblib==1.3.2 --python /opt/venv/bin/python
 
 # --------------- PORT & CMD ---------------
 EXPOSE 8888
 
-CMD ["jupyter", "lab", \
+CMD ["/opt/venv/bin/jupyter", "lab", \
      "--ip=0.0.0.0", \
      "--port=8888", \
      "--no-browser", \

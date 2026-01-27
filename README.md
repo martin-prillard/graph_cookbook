@@ -13,10 +13,14 @@ Three different ways to use this project using:
 ### Option A: installation using DevContainer (recommended)
 
 **Prerequisites**: 
-- Docker or Docker Desktop (https://www.docker.com/products/docker-desktop/)
-- VSCode or Cursor (https://code.visualstudio.com/download)
-- Dev Containers VSCode or Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-- Optional: WSL VSCode or Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- Docker or Docker Desktop
+See: https://www.docker.com/products/docker-desktop/
+- VSCode or Cursor
+See: https://code.visualstudio.com/download
+- Dev Containers VSCode or Cursor extension
+See: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers
+- Optional: WSL VSCode or Cursor extension
+See: https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl
 
 **Steps**:
 

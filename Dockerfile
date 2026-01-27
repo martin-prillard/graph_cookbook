@@ -5,10 +5,10 @@ FROM python:3.11-slim
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    VIRTUAL_ENV=/workspace/.venv \
-    PATH=/workspace/.venv/bin:/home/vscode/.local/bin:/usr/local/bin:$PATH
+    VIRTUAL_ENV=/opt/venv \
+    PATH=/opt/venv/bin:/home/vscode/.local/bin:/usr/local/bin:$PATH
 
-# --------------- SYSTEM DEPENDENCIES ---------------
+# --------------- SYSTEM DEPENDENCIES (root) ---------------
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     git \
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     libproj-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# --------------- CREATE NON-ROOT USER ---------------
+# --------------- CREATE NON-ROOT USER (root) ---------------
 ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=1000
@@ -27,21 +27,32 @@ ARG USER_GID=1000
 RUN groupadd --gid $USER_GID $USERNAME \
     && useradd --uid $USER_UID --gid $USER_GID -m $USERNAME
 
-USER $USERNAME
-
-WORKDIR /workspace
-
-# --------------- PYTHON / UV ---------------
+# --------------- INSTALL UV (root, global) ---------------
 RUN pip install --upgrade pip uv
 
+# --------------- CREATE VENV OUTSIDE WORKSPACE (root) ---------------
+RUN uv venv /opt/venv --python python
+
+# --------------- SWITCH USER ASAP ---------------
+USER $USERNAME
+
+# --------------- APP WORKDIR (mounted volume) ---------------
+WORKDIR /workspace
+
+# --------------- PYTHON DEPS (user) ---------------
 COPY pyproject.toml uv.lock* ./
 
-RUN uv sync --python python --locked
+RUN uv sync --locked
 
-# hard fix
+# hard fix: compatibility issue between pycaret 3.3.0 and node2vec 0.5.0
 RUN uv pip install --force-reinstall joblib==1.3.2
 
 # --------------- PORT & CMD ---------------
 EXPOSE 8888
 
-CMD ["jupyter", "lab", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--ServerApp.token=", "--ServerApp.password="]
+CMD ["jupyter", "lab", \
+     "--ip=0.0.0.0", \
+     "--port=8888", \
+     "--no-browser", \
+     "--ServerApp.token=", \
+     "--ServerApp.password="]

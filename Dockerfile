@@ -5,8 +5,8 @@ FROM python:3.11-slim
 ENV DEBIAN_FRONTEND=noninteractive \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    VIRTUAL_ENV=/opt/venv \
-    PATH=/opt/venv/bin:/home/vscode/.local/bin:/usr/local/bin:$PATH
+    VIRTUAL_ENV=/tmp/venv \
+    PATH=/tmp/venv/bin:/home/vscode/.local/bin:/usr/local/bin:$PATH
 
 # --------------- SYSTEM DEPENDENCIES (root) ---------------
 RUN apt-get update && apt-get install -y --no-install-recommends \
@@ -31,7 +31,8 @@ RUN groupadd --gid $USER_GID $USERNAME \
 RUN pip install --upgrade pip uv
 
 # --------------- CREATE VENV OUTSIDE WORKSPACE (root) ---------------
-RUN uv venv /opt/venv --python python
+RUN uv venv /tmp/venv --python python
+RUN chown -R vscode:vscode /tmp/venv
 
 # --------------- SWITCH USER ASAP ---------------
 USER $USERNAME
@@ -45,7 +46,7 @@ COPY pyproject.toml uv.lock* ./
 RUN uv sync --locked
 
 # hard fix: compatibility issue between pycaret 3.3.0 and node2vec 0.5.0
-RUN uv pip install --force-reinstall joblib==1.3.2
+RUN uv pip install --force-reinstall joblib==1.3.2 --python /tmp/venv/bin/python
 
 # --------------- PORT & CMD ---------------
 EXPOSE 8888

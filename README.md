@@ -13,16 +13,17 @@ Three different ways to use this project using:
 ### Installation using DevContainer (recommended)
 
 **Prerequisites**: 
-- Docker
-- VSCode or Cursor
-- Dev Containers extension on VSCode or Cursor
+- Docker (https://www.docker.com/products/docker-desktop/)
+- VSCode or Cursor (https://code.visualstudio.com/download)
+- Dev Containers VSCode / Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- Optional: WSL VSCode / Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 
 **Steps**:
 
 ```bash
 git clone https://github.com/martin-prillard/graph_cookbook
 cd graph_cookbook
-# Open in VS Code → "Reopen in Container"
+# Open in VS Code / CTRL + Shift + P → "Rebuild and Reopen in Container"
 ```
 
 VSCode will build the container, installs dependencies via uv sync, mounts your code.
@@ -30,7 +31,7 @@ Code changes are automatically saved locally.
 
 
 ### Installation using Docker only 
-(optional, if you have problem with DevContainer)
+(optional, if you have some issue with DevContainer installation or if you don't want to use a IDE)
 
 1. **Build the image**
 ```bash
@@ -39,11 +40,14 @@ docker build -t graph_cookbook .
 
 2. **Start JupyterLab**
 ```bash
-docker run --gpus all --rm -p 8888:8888 -v "$(pwd)":/workspace graph_cookbook
+docker run --rm -p 8888:8888 -v "$(pwd)":/workspace graph_cookbook
 ```
+Note: add `--gpus all` on the docker run command if you want to use your GPU.
 
 ### Installation using Python environment
 (optional, if you want to run this project from scratch)
+
+Warning: unlike installations via DevContainer and Docker, installation via UV may fail due to library dependency conflicts on your host OS/architecture. 
 
 1. **Install uv**
 

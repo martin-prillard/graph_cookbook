@@ -39,18 +39,22 @@ docker build -t graph_cookbook .
 
 2. **Start JupyterLab**
 ```bash
-docker run --gpus all --rm -p 8888:8888 -v "$(pwd)/src":/workspace/src -v "$(pwd)/data":/workspace/data graph_cookbook
+docker run --gpus all --rm -p 8888:8888 -v "$(pwd)":/workspace graph_cookbook
 ```
 
 ### Installation using Python environment
 (optional, if you want to run this project from scratch)
 
-1. **Create your python env**
+1. **Install uv**
+
+https://docs.astral.sh/uv/getting-started/installation/
+
+2. **Create your python env**
 ```bash
 uv sync
 ```
 
-2. **Run Jupyter Lab**
+3. **Run Jupyter Lab**
 ```bash
 uv run jupyter lab
 ```

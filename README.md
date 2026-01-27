@@ -10,13 +10,13 @@ Three different ways to use this project using:
 - Docker image
 - Python environment
 
-### Installation using DevContainer (recommended)
+### Option A: installation using DevContainer (recommended)
 
 **Prerequisites**: 
-- Docker (https://www.docker.com/products/docker-desktop/)
+- Docker or Docker Desktop (https://www.docker.com/products/docker-desktop/)
 - VSCode or Cursor (https://code.visualstudio.com/download)
-- Dev Containers VSCode / Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
-- Optional: WSL VSCode / Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
+- Dev Containers VSCode or Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)
+- Optional: WSL VSCode or Cursor extension (https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-wsl)
 
 **Steps**:
 
@@ -30,7 +30,7 @@ VSCode will build the container, installs dependencies via uv sync, mounts your 
 Code changes are automatically saved locally.
 
 
-### Installation using Docker only 
+### Option B: installation using Docker only
 (optional, if you have some issue with DevContainer installation or if you don't want to use a IDE)
 
 1. **Build the image**
@@ -44,7 +44,7 @@ docker run --rm -p 8888:8888 -v "$(pwd)":/workspace graph_cookbook
 ```
 Note: add `--gpus all` on the docker run command if you want to use your GPU.
 
-### Installation using Python environment
+### Option C: installation using Python environment
 (optional, if you want to run this project from scratch)
 
 Warning: unlike installations via DevContainer and Docker, installation via UV may fail due to library dependency conflicts on your host OS/architecture. 

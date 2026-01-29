@@ -12,7 +12,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "python.defaultInterpreterPath": "/workspace/.venv/bin/python",
+        "python.defaultInterpreterPath": "/opt/venv/bin/python",
         "python.terminal.activateEnvironment": true,
         "jupyter.defaultKernel": "Python 3.11 (uv)"
       },

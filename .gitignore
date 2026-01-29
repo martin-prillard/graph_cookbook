@@ -13,3 +13,4 @@ logs.logs
 *.log
 *.trashinfo
 *Zone.Identifier
+.virtual_documents/

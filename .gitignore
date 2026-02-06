@@ -11,6 +11,9 @@ logs.logs
 *.edgelist
 */data/*
 *.log
+*.gml
 *.trashinfo
 *Zone.Identifier
 .virtual_documents/
+AutogluonModels/
+catboost_info/

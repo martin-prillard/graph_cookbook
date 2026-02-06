@@ -44,7 +44,7 @@ docker build -t graph_cookbook .
 
 2. **Start JupyterLab**
 ```bash
-docker run --rm -p 8888:8888 -v "$(pwd)":/workspace graph_cookbook
+docker run --rm -p 8888:8888 -v .:/workspace graph_cookbook
 ```
 Note: add `--gpus all` on the docker run command if you want to use your GPU.
 
